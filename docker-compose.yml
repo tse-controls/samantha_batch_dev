@@ -5,9 +5,9 @@ services:
   samantha_DevBatch_gateway:
     image: inductiveautomation/ignition:latest
     ports:
-      - "10088:8088"
-      - "10043:8043"
-      - "10060:8060"
+      - "8091:8088"
+      - "8092:8043"
+      - "8093:8060"
     
     # env_file: ignition.env  # optionally specify variables in a file, or using `environment:` below
     environment:
@@ -22,8 +22,8 @@ services:
     command: 
       -n samantha-batch-dev-gateway 
       -a 127.0.0.1 
-      -h 10088 
-      -s 10043
+      -h 8091
+      -s 8092
       
    
     volumes:
