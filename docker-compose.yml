@@ -1,0 +1,52 @@
+
+version: '3.4'
+
+services:
+  samantha_DevBatch_gateway:
+    image: inductiveautomation/ignition:latest
+    ports:
+      - "10088:8088"
+      - "10043:8043"
+      - "10060:8060"
+    
+    # env_file: ignition.env  # optionally specify variables in a file, or using `environment:` below
+    environment:
+      - ACCEPT_IGNITION_EULA=Y
+      - GATEWAY_ADMIN_USERNAME=admin
+      - GATEWAY_ADMIN_PASSWORD=admin
+      - IGNITION_EDITION=full
+      #- IGNITION_LICENSE_KEY =
+      #- IGNITION_ACTIVATION_TOKEN = 
+      - TZ=America/New_York
+
+    command: 
+      -n samantha-batch-dev-gateway 
+      -a 127.0.0.1 
+      -h 10088 
+      -s 10043
+      
+   
+    volumes:
+      # - ./gateway_backup.gwbk:/restore.gwbk
+      - samantha_DevBatch_data:/usr/local/bin/ignition/data
+  
+     
+  
+  samantha_ignitionDev_db:
+    image: mariadb:10.5.8
+    ports:
+     - "3310:3306"
+    restart: always
+    environment: 
+      - MYSQL_ROOT_PASSWORD=ignition
+      - MYSQL_DATABASE=ignition
+      
+    volumes:
+      - samantha_ignitionDevBatch_db:/var/lib/mysql
+    
+
+
+volumes: 
+  samantha_DevBatch_data: 
+  samantha_ignitionDevBatch_db: 
+  
