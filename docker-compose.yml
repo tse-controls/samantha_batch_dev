@@ -28,7 +28,7 @@ services:
    
     volumes:
       # - ./gateway_backup.gwbk:/restore.gwbk
-      - ./samantha_DevBatch_data:/usr/local/bin/ignition/data
+      - samantha_DevBatch_data:/usr/local/bin/ignition/data
   
      
   
@@ -42,5 +42,9 @@ services:
       - MYSQL_DATABASE=ignition
       
     volumes:
-      - ./samantha_ignitionDevBatch_db:/var/lib/mysql
+      - samantha_ignitionDevBatch_db:/var/lib/mysql
     
+
+volumes: 
+  samantha_DevBatch_data: 
+  samantha_ignitionDevBatch_db:
