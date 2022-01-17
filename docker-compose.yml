@@ -3,18 +3,18 @@ version: '3.4'
 
 services:
   samantha_DevBatch_gateway:
-    image: inductiveautomation/ignition:latest
+    image: inductiveautomation/ignition:8.1.12
     ports:
-      - "8091:8088"
-      - "8092:8043"
-      - "8093:8060"
+      - "13088:8088"
+      - "13043:8043"
+      - "13060:8060"
     
     # env_file: ignition.env  # optionally specify variables in a file, or using `environment:` below
     environment:
       - ACCEPT_IGNITION_EULA=Y
       - GATEWAY_ADMIN_USERNAME=admin
       - GATEWAY_ADMIN_PASSWORD=admin
-      - IGNITION_EDITION=full
+      - IGNITION_EDITION=standard
       #- IGNITION_LICENSE_KEY =
       #- IGNITION_ACTIVATION_TOKEN = 
       - TZ=America/New_York
@@ -22,8 +22,8 @@ services:
     command: 
       -n samantha-batch-dev-gateway 
       -a 127.0.0.1 
-      -h 8091
-      -s 8092
+      -h 13088
+      -s 13043
       
    
     volumes:
@@ -35,7 +35,7 @@ services:
   samantha_ignitionDev_db:
     image: mariadb:10.5.8
     ports:
-     - "3310:3306"
+     - "3313:3306"
     restart: always
     environment: 
       - MYSQL_ROOT_PASSWORD=ignition
