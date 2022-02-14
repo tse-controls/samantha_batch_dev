@@ -3,7 +3,7 @@ version: '3.4'
 
 services:
   samantha_DevBatch_gateway:
-    image: inductiveautomation/ignition:8.1.12
+    image: inductiveautomation/ignition:latest
     ports:
       - "13088:8088"
       - "13043:8043"
@@ -33,7 +33,7 @@ services:
      
   
   samantha_ignitionDev_db:
-    image: mariadb:10.5.8
+    image: mariadb:latest
     ports:
      - "3313:3306"
     restart: always
