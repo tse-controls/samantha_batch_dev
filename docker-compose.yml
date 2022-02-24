@@ -43,7 +43,17 @@ services:
       
     volumes:
       - samantha_ignitionDevBatch_db:/var/lib/mysql
-    
+
+
+  adminer_container:
+        image: adminer:latest
+        environment: 
+            ADMINER_DEFAULT_SERVER: samantha_ignitionDev_db
+            ADMINER_DESIGN: dracula # galkaev
+        ports: 
+          - 13080:8080
+
+
 
 volumes: 
   samantha_DevBatch_data: 
